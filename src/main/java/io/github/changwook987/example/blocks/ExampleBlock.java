@@ -97,12 +97,21 @@ public class ExampleBlock extends Block {
         }
     }
     private void summonCreeper(Broken broken) {
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10; i++) {
             CreeperEntity creeper = new CreeperEntity(EntityType.CREEPER, (World) broken.getWorld());
             creeper.setPos(broken.getPos().getX(), broken.getPos().getY() + 1, broken.getPos().getZ());
             creeper.setVelocity(new Vec3d(random.nextDouble(-.5, .5), 1, random.nextDouble(-.5, .5)));
 
             broken.getWorld().spawnEntity(creeper);
+        }
+    }
+    private void summonItem(Broken broken) {
+        for (int i = 0; i < 10; i++) {
+            dropStack(); item = new ItemEntity(EntityType.ITEM, (World) broken.getWorld());
+            item.setPos(broken.getPos().getX(), broken.getPos().getY() + 1, broken.getPos().getZ());
+            item.setVelocity(new Vec3d(random.nextDouble(-.5, .5), 1, random.nextDouble(-.5, .5)));
+
+            broken.getWorld().spawnEntity(item);
         }
     }
 
